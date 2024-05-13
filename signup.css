@@ -1,0 +1,17 @@
+body{
+    background-image: url(7.jpg);
+}
+
+.fillup{
+   background-color: aliceblue;
+   margin: 3% auto;
+   padding: 3px;
+   border-radius: 40px;
+   opacity: 0.6;
+   height: 400px;
+   text-align: center;
+}
+
+.fill{
+    padding: 3px;
+}

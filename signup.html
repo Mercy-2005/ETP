@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="signup.css">
+    <title>Document</title>
+</head>
+<body>
+    <form action="connect.php" method="post">  
+        <section class="fillup">
+            <h1>SIGN-UP</h1>
+        <hr>
+            <section class="fill">
+        <label for="Firstname">First Name: </label>
+        <input type="text" id="Firstname"  name="Firstname" placeholder="Your Username" required>
+    </section>
+    <section class="fill">
+        <label for="Lastname">Lastn Name: </label>
+        <input type="text" id="Lastname"  name="Lastname" placeholder="Your Username" required>
+    </section>
+        <br>
+        <section class="fill">
+        <label for="Email">Email: </label>
+        <input type="email" id="Email" name="Email" placeholder="Your G-mail" required>
+    </section>
+        <br>
+        <section class="fill">
+        <span>Gender: </span>
+        <input type="radio" id="male" name="Gender">
+        <label for="male">Male: </label>
+        <input type="radio" id="female" name="Gender">
+        <label for="female">Female: </label>
+    </section>
+        <br>
+        <section class="fill">
+        <label for="Password">Password: </label>
+        <input type="password" id="Password" name="Password" required>
+    </section>
+        <br>
+        <section class="fill">
+        <label for="Password1">Confirm Password: </label>
+        <input type="password" id="Password1" name="Password1" required>
+    </section>
+    <input type="submit">
+    </section>
+    </form>
+    
+</body>
+</html>
