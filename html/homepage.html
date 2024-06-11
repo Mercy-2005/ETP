@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinema Showtimes</title>
+    <link rel="stylesheet" href="../css/hp.css">
+
+</head>
+<body>
+    <header>
+        <h1>Cinema Showtimes</h1>
+        <div class="controls">
+            <form action="../php/handle_post.php" method="post" id="search-form">
+                <input type="text" name="search" id="search-bar" placeholder="Search for movies...">
+                <select name="cinema" id="cinema-select">
+                    <option value="">Select Closest Cinema</option>
+                    <!-- Cinema options will be dynamically added here -->
+                </select>
+                <button type="submit">Enter</button>
+            </form>
+        </div>
+    </header>
+    <main>
+        <section id="movies">
+            <h1>Up-Coming Movies</h1>
+            <div class="slider-container">
+                <button class="slider-button prev">&lt;</button>
+                <ul class="movies"></ul>
+                <button class="slider-button next">&gt;</button>
+            </div>
+        </section>
+
+        <section id="movies">
+            <h1>Just Released</h1>
+            <div class="slider-container">
+                <button class="slider-button prev">&lt;</button>
+                <ul class="movies"></ul>
+                <button class="slider-button next">&gt;</button>
+            </div>
+        </section>
+    </main>
+    
+    <script src="../js/hp.js" type="module"></script>
+    <script>
+        const url = 'https://imdb8.p.rapidapi.com/auto-complete?q=game';
+        const options = {
+            method: 'GET',
+            headers: {
+                'X-RapidAPI-Key': '7b82c2cf82msh95d7024d6d09825p1d118ejsn3c6f6765785f',
+                'X-RapidAPI-Host': 'imdb8.p.rapidapi.com'
+            }
+        };
+
+        fetch(url, options)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data); // Log the entire response data
+                const list = data.d;
+
+                list.forEach((item) => {
+                    const name = item.l;
+                    const poster = item.i.imageUrl;
+                    const movie = `<li><img src="${poster}" alt="${name} poster"> <h2>${name}</h2></li>`;
+                    document.querySelector('.movies').innerHTML += movie;
+                });
+
+                initializeSlider();
+            })
+            .catch(err => {
+                console.error(err);
+            });
+
+        function initializeSlider() {
+            const sliderContainers = document.querySelectorAll('.slider-container');
+            sliderContainers.forEach(container => {
+                const slider = container.querySelector('.movies');
+                const prevButton = container.querySelector('.prev');
+                const nextButton = container.querySelector('.next');
+                let scrollAmount = 0;
+
+                prevButton.addEventListener('click', () => {
+                    slider.scrollTo({
+                        top: 0,
+                        left: (scrollAmount -= 300),
+                        behavior: 'smooth'
+                    });
+                });
+
+                nextButton.addEventListener('click', () => {
+                    slider.scrollTo({
+                        top: 0,
+                        left: (scrollAmount += 300),
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        }
+    </script>
+</body>
+</html>

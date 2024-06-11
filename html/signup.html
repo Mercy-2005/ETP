@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE-edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/signup.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <title>Sign up</title>
+  </head>
+  <body>
+    <div class="pt1">
+      <div class="header">
+        <div class="logo">
+          <img
+            src="../image/logo.png"
+            width="300"
+            height="120"
+            alt="app logo"
+          />
+        </div>
+        <div>
+          <nav>
+            <ul>
+              <li><a href="#" class="active">Home</a></li>
+              <li><a href="">How it works</a></li>
+              <li><a href="">Services</a></li>
+              <li>
+                <a href=""
+                  >Contact Us
+                  <i class="fa fa-caret-down" style="color: white"> </i>
+                </a>
+                <ul class="dropdown">
+                  <li><a href="#">facebook</a></li>
+                  <li><a href="#">whatsapp</a></li>
+                  <li><a href="#">twitter</a></li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+        <div class="btn">
+          <div class="button-container">
+            <ul>
+              <li>
+                <a class="signup btns" id="loginBtn" onclick="register()"
+                  ><button style="border: none">Sign Up</button></a
+                >
+              </li>
+              <li>
+                <button
+                  class="login btns white-btn"
+                  id="registerBtn"
+                  onclick="login()"
+                >
+                  Log In
+                </button>
+              </li>
+            </ul>
+          </div>
+          <div class="menu-button">
+            <i class="bx bx-menu" onclick="myMenuFunction()"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <form id="signupForm" action="../php/connect.php" method="post">
+      <section class="fillup">
+        <!-- ------------------------------login----------------------- -->
+        <div class="login1" id="login0">
+            <div class="all">
+              <h1>Login</h1>
+              <br />
+  
+              <section class="fill">
+                <input
+                  type="email"
+                  class="fill-info"
+                  name="Email"
+                  placeholder="Username or E-mail"
+                  required
+                />
+                <i class="bx bx-user"></i>
+              </section>
+  
+              <section class="fill">
+                <input
+                  type="password"
+                  class="fill-info"
+                  name="Password1"
+                  placeholder="Password"
+                  required
+                />
+                <i class="bx bx-lock-alt"></i>
+              </section>
+              <br />
+              <section>
+                <input type="submit" class="submit" value="Sign in" />
+              </section>
+              <div class="two-col">
+                <div class="one">
+                  <input type="checkbox" id="login-check" />
+                  <label for="login-check"> Remember Me</label>
+                </div>
+                <div class="two">
+                  <label><a href="#">| Forgot Password?</a></label>
+                </div>
+              </div>
+  
+              <div>
+                <span class="span"
+                  >Don't have an account?
+                  <a href="#" onclick="register0()">Sign up</a></span
+                >
+              </div>
+            </div>
+          </div>
+
+        <!-- ------------------------------Sign up------------------------- -->
+        
+        <div class="register1 form-hidden" id="register0">
+          <h1>Sign Up</h1>
+          <br />
+          <div class="all">
+            <div class="names">
+              <div class="fill">
+                <input
+                  type="text"
+                  class="fill-info"
+                  name="Firstname"
+                  placeholder="Firstname"
+                  required
+                />
+                <i class="bx bx-user"></i>
+              </div>
+              <br />
+              <div class="fill">
+                <input
+                  type="text"
+                  class="fill-info"
+                  name="Lastname"
+                  placeholder="Lastname"
+                  required
+                />
+                <i class="bx bx-user"></i>
+              </div>
+              <br />
+            </div>
+            <section class="fill">
+              <input
+                type="email"
+                class="fill-info"
+                name="Email"
+                placeholder="E-mail"
+                required
+              />
+              <i class="bx bx-envelope"></i>
+            </section>
+
+            <section class="fill">
+              <span>Gender: </span>
+              <input type="radio" id="male" name="Gender" value="male" />
+              <label for="male">Male </label>
+              <input type="radio" id="female" name="Gender" value="female" />
+              <label for="female">Female </label>
+              <input
+                type="radio"
+                id="undefined"
+                name="Gender"
+                value="undefined"
+              />
+              <label for="undefined">Rather Not Say </label>
+            </section>
+            <br />
+            <section class="fill">
+              <input
+                type="password"
+                class="fill-info"
+                name="Password1"
+                placeholder="Password"
+                required
+              />
+              <i class="bx bx-lock-alt"></i>F
+            </section>
+            <br />
+            <section class="fill">
+              <input
+                type="password"
+                class="fill-info"
+                name="Password2"
+                placeholder="Confim Password"
+              />
+              <i class="bx bx-lock-alt"></i>
+            </section>
+            <section>
+              <input type="submit" class="submit" value="Register" />
+            </section>
+            <div class="two-col">
+              <div class="one">
+                <input type="checkbox" id="register-check" />
+                <label for="register-check"> Remember Me</label>
+              </div>
+              <div class="two">
+                <label><a href="#">Terms & conditions</a></label>
+              </div>
+            </div>
+
+            <div>
+              <span class="span"
+                >Already have an account?
+                <a href="#" onclick="login0()">Login</a></span
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+    </form>
+
+    <script>
+      var a = document.getElementById("loginBtn");
+      var b = document.getElementById("registerBtn");
+      var x = document.getElementById("login0");
+      var y = document.getElementById("register0");
+
+      function login0() {
+        x.style.left = "-6px";
+        y.style.right = "-700px";
+        a.className += "white-btn";
+        b.className = "btns";
+      }
+      function register0() {
+        x.style.left = "-500px";
+        y.style.right = "2px";
+        a.className = "btns";
+        b.className += "white-btn";
+      }
+
+      document
+        .getElementById("signupForm")
+        .addEventListener("submit", function (event) {
+          var password1 = document.getElementsByName("Password1")[0].value;
+          var password2 = document.getElementsByName("Password2")[0].value;
+          if (password1 !== password2) {
+            event.preventDefault();
+            alert("Passwords do not match!");
+          }
+        });
+    </script>
+  </body>
+</html>
